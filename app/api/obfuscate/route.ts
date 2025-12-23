@@ -1,8 +1,7 @@
-import { NextResponse } from "next/server";
-import { obfuscate } from "../../../engine/generator";
+// app/api/obfuscate/route.ts
+import { obfuscate } from "@/engine/build"
 
 export async function POST(req: Request) {
-  const { source } = await req.json();
-  const output = obfuscate(source);
-  return NextResponse.json({ output });
+  const { code } = await req.json()
+  return Response.json({ result: obfuscate(code) })
 }
